@@ -17,10 +17,14 @@
 	//controllers
 	require_once '../../control/RequisicaoController.php';
 	require_once '../../control/FormularioController.php';
+	require_once '../../control/PermissaoController.php';
+	require_once '../../control/ClienteController.php';
 	
 	//instanciando controllers
 	$requisicaoController = new RequisicaoController();
 	$formularioController = new FormularioController();
+	$permissaoController = new PermissaoController();
+	$clienteController = new ClienteController();
 	
 	//acesso a dados a serem listados
 	$formularios = $formularioController->listAtivos();
@@ -37,7 +41,7 @@
 <link type="text/css" href="../ci/css/menu.css" rel="stylesheet" />
 <link type="text/css" href="../ci/css/preload.css" rel="stylesheet" />
 <link type="text/css" href="../ci/css/nucleo.css" rel="stylesheet" />
-<link type="image/png" href="../ci/imagens/favicon.png" rel="icon" />
+<link type="image/png" href="../ci/imagens/icone.png" rel="icon" />
 <script type="text/javascript" src="../ci/js/jquery.js"></script>
 <script type="text/javascript" src="../ci/js/menu.js"></script>
 <script type="text/javascript" src="../ci/js/modalTop.js"></script>
@@ -51,7 +55,9 @@
 </div>
 <div id="menu">
 	<ul class="menu" style="margin-top: -15px;" >
-		<li><a class="parent"><span>EwF</span></a>
+		<li><a class="parent"><img style="margin-top:28px;margin-left:-25px;" src="../ci/imagens/logo_snet.png" /></a>
+		</li>
+		<li><a class="parent"><span>Menu</span></a>
 			<div><ul>
 				<li><a href="../feedback.php"><span>Início</span></a></li>
 				<? if($_SESSION['tipo_usuario_logado'] != '3') : ?>
@@ -60,13 +66,13 @@
 				<li><a href="?logout"><span>Logout</span></a></li>
 			</ul></div>
 		</li>
-		<li><a href="#" class="parent"><span>Requisições</span></a>
+		<li><a href="#" class="parent"><span>Requisição</span></a>
 			<div><ul>
 				<li><a href="../cadastro/cadRequisicao.php"><span>Enviar</span></a></li>
 				<li><a href="../consulta/consRequisicao.php"><span>Consultar</span></a></li>
 				<? if($_SESSION['tipo_usuario_logado'] != '3') : ?>
 				<li><a href="../cadastro/cadIntegrado.php"><span>Integrar</span></a></li>
-				<li><a href="../auxiliares/monitorFeedback.php"><span>Monitorar</span></a></li>
+				<li><a href="../auxiliares/monitorFeedback.php"><span>Monitor</span></a></li>
 				<? endif; ?>
 			</ul></div>
 		</li>
@@ -115,7 +121,28 @@
 	<h3>Monitor de Feedback</h3>
     <fieldset style="width:870px;">
     <legend></legend>
-	    <form action="<? $PHP_SELF; ?>" method="post" enctype="multipart/form-data">
+	    <form action="" method="post" enctype="multipart/form-data">
+		<p><label for="ordem_log">Ordernar Por:</label>
+			<select size="1" name="ordem_log" style="width:150px;">
+				<option value="0" <? if ($_SESSION["ordem_log"] == '0') echo "selected"; ?>>Prioridade</option>
+				<option value="1" <? if ($_SESSION["ordem_log"] == '1') echo "selected"; ?>>Momento Cadastro</option>
+				<option value="2" <? if ($_SESSION["ordem_log"] == '2') echo "selected"; ?>>Momento Alteração</option>
+			</select></p>
+					
+		<p><label for="cliente_log">Cliente:</label>
+			<select size="1" name="cliente_log" style="width:150px;">
+				<option value="0">Todos</option>
+				<?=$clienteController->getComboTodos()?>
+			</select></p>
+							
+		<p><label for="responsavel_log">Responsável:</label>
+			<select size="1" name="responsavel_log" style="width:150px;">
+				<option value="0">Todos</option>
+				<?=$permissaoController->getComboResponsaveis()?>
+			</select>
+		
+		<input name="BTFiltro" class="formbutton" value="Filtrar" type="submit" style="margin-left:20px;"/></p>
+		<p>
 		<table cellpading="0" cellspacing="5" border="0">
 			<tbody>
 			<? echo($requisicaoController->printMonitor($ultimasRequisicoes)); ?>

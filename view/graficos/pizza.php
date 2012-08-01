@@ -10,7 +10,7 @@
 							left join componentes c on (c.id_componente=r.id_componente)
 						where
 							r.id_projeto='.$_SESSION['id_projeto_logado'].' and r.tipo='.$_SESSION['read_tipo'].' group by
-							c.id_componente, c.nome order by c.id_componente');
+							c.id_componente, c.nome');
 	$data = array();
 	$count = 0;
 	while($row = pg_fetch_object($erros)) {

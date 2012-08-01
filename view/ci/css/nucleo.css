@@ -4,7 +4,7 @@
 }
 
 body { 
-	background:#555 url(../imagens/back.jpg);
+	background:#ededed;
 }
 
 a:link {
@@ -192,7 +192,7 @@ form input.formbutton {
 	border:none;
 	font-family:Arial, Helvetica, sans-serif;
 	border:1px solid #002142;
-	background-color:#8a8a8a;
+	background-color:#333232;
 	color:#ffffff;
 	font-weight:bold;
 	padding:5px 10px;
@@ -287,7 +287,7 @@ th {
 	color:#fff;
 	padding:3px 5px;
 	text-align: center;
-	background-color:#8a8a8a;
+	background-color:#333232;
 }
 td {
 	background:#fff;

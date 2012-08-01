@@ -43,7 +43,7 @@
 					->where('r.id_cliente='.$_SESSION['id_cliente_logado'].'');
 			}
 			$requisicao
-				->order('r.momento_cadastro desc')
+				->order('r.momento_cadastro DESC')
 				->limit(5)
 				->find();
 				
@@ -78,16 +78,45 @@
 		* Retorno: Lista
 		*/
 		function listRecebidas() {
+			session_start();
 			$requisicao = new Requisicao;
 			$usuario = new Usuario;
 			$cliente = new Cliente;
 			$requisicao
 				->alias('r')
-				//->select('r.id_requisicao,r.titulo,r.chave,r.situacao,r.momento_cadastro,r.momento_alteracao,u.nome,c.nome as nomecliente')
-				->join($usuario,'inner','u','id_usuario_cadastro','id_usuario')
+				->join($usuario,'inner','u','id_usuario_responsavel','id_usuario')
 				->join($cliente,'left','c','id_cliente','id_cliente')
-				->where("r.id_projeto=".$_SESSION['id_projeto_logado']."")
-				->order('r.momento_cadastro DESC')
+				->where('r.id_projeto='.$_SESSION['id_projeto_logado'].' and (r.situacao=1 or r.situacao=2)');
+				
+			if ($_SESSION['ordem_log'] == null or $_SESSION['ordem_log'] == '0') {
+				$requisicao
+					->order('r.prioridade');
+			}
+			else {
+				if ($_SESSION['ordem_log'] == '1') {
+						$requisicao
+							->order('r.momento_cadastro DESC');
+				}
+				else {
+					if ($_SESSION['ordem_log'] == '2') {
+						$requisicao
+							->order('r.momento_alteracao DESC');
+					}
+				}
+			}
+			
+			if (!($_SESSION['cliente_log'] == null or $_SESSION['cliente_log'] == '0')) {
+				$requisicao
+					->where('r.id_cliente='.$_SESSION['cliente_log'].'');
+			}
+			
+			if (!($_SESSION['responsavel_log'] == null or $_SESSION['responsavel_log'] == '0')) {
+				$requisicao
+					->where('r.id_usuario_responsavel='.$_SESSION['responsavel_log'].'');
+			}			
+			
+			$requisicao
+				//->order('r.momento_cadastro DESC')
 				->limit(30)
 				->find();
 			
@@ -128,10 +157,11 @@
 		*/
 		function printMonitor($requisicoes){
 			$result .= '<tr>';
+			$result .= '<th>Prioridade</th>';
 			$result .= '<th>Chave</th>';
 			$result .= '<th>Título</th>';
 			$result .= '<th>Situação</th>';
-			$result .= '<th>Requisitante</th>';
+			$result .= '<th>Responsavel</th>';
 			$result .= '<th>Cliente</th>';
 			$result .= '<th>Cadastro</th>';
 			$result .= '</tr>';
@@ -142,7 +172,7 @@
 				if ($requisicoes->situacao == 3) $requisicoes->situacao = 'Resolvido';
 				if ($requisicoes->situacao == 4) $requisicoes->situacao = 'Rejeitado';
 				$result .= '<tr>';
-				$result .= '<td>'.$requisicoes->chave.'</td><td>'.$requisicoes->titulo.'</td><td>'.$requisicoes->situacao.'</td><td>'.$requisicoes->nome.'</td><td>'.$requisicoes->nome_curto.'</td><td>'.FormataDataHora($requisicoes->momento_cadastro).'</td>';
+				$result .= '<td>'.$requisicoes->prioridade.'</td><td>'.$requisicoes->chave.'</td><td>'.$requisicoes->titulo.'</td><td>'.$requisicoes->situacao.'</td><td>'.$requisicoes->nome.'</td><td>'.$requisicoes->nome_curto.'</td><td>'.FormataDataHora($requisicoes->momento_cadastro).'</td>';
 				$result .= '<td><button class="update" title="Atualizar" type="submit" name="BTUpd" value="'.$requisicoes->id_requisicao.'"></button></td>';
 				if ($_SESSION['tipo_usuario_logado'] == '1')
 					$result .= '<td><button onClick="if(confirm(\'Deseja excluir esse registro?\')){return true;}else{return false;}" class="delete" title="Deletar" type="submit" name="BTDel" value="'.$requisicoes->id_requisicao.'"></button></td>';
@@ -233,10 +263,9 @@
 		function getSitucao(){
 			if (!empty($_SESSION['upd_requisicao'])) {
 				$result .= '<p><label for="situacao">Situação:</label>';
-                $result .= '<select size="1" name="situacao" style="width:180px;" ';
+		                $result .= '<select size="1" name="situacao" style="width:180px;" ';
 				
-				if ($_SESSION['tipo_usuario_logado'] == '3')
-					$result .= 'disabled';
+				$result .= $_SESSION['permissao'];
 				
 				$result .= '><option value="1" ';
 				

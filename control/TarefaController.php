@@ -112,7 +112,7 @@
 				if ($tarefas->situacao == 4) $tarefas->situacao = 'Fechada';
 				if ($vencimento < 1)
 					$result .= '<div style="margin-left:5px;margin-top:10px;"><img title="" src="ci/imagens/ind_vermelho.png"></div>';
-				else if ($vencimento > 1 and $vencimento < 6)
+				else if ($vencimento >= 1 and $vencimento < 6)
 					$result .= '<div style="margin-left:5px;margin-top:10px;"><img title="" src="ci/imagens/ind_amarelo.png"></div>';
 				else
 					$result .= '<div style="margin-left:5px;margin-top:10px;"><img title="" src="ci/imagens/ind_verde.png"></div>';

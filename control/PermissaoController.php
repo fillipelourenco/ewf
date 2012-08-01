@@ -16,7 +16,7 @@
 			$usuario
 				->alias('u')
 				->join($permissao,'inner','per','id_usuario','id_usuario')
-				->where('per.id_projeto='.$_SESSION['id_projeto_logado'].'')
+				->where('per.id_projeto='.$_SESSION['id_projeto_logado'].' and per.integra=false')
 				->order('u.tipo, u.nome')
 				->find();
 				
@@ -174,6 +174,32 @@
 				else {
 					$result .= '>'.$item['nome'].'</option>';
 				}
+			}
+			return $result;
+		}
+		
+		/**
+		* Combo dos Usuarios Permitidos no Projeto Logado
+		* Retorno: String
+		*/
+		function getComboResponsaveis(){
+			$usuario = new Usuario;
+			$permissao = new Permissao;
+			$usuario
+				->alias('u')
+				->join($permissao,'inner','up','id_usuario','id_usuario')
+				->where('id_projeto='.$_SESSION['id_projeto_logado'].' and tipo <> 3')
+				->order('u.nome')
+				->find();
+			$usuarios = $usuario->allToArray();
+			
+			foreach($usuarios as $item) {
+				$result .= '<option value="'.$item['id_usuario'].'"';
+				if (!empty($_SESSION['upd_requisicao'])) {
+					if($item['id_usuario']==$_SESSION['obj_requisicao']['id_usuario_responsavel']) $result .= ' selected';
+				}
+				if($_SESSION['responsavel_log'] == $item['id_usuario']) $result .= ' selected';
+				$result .= '>'.$item['nome'].'</option>';
 			}
 			return $result;
 		}

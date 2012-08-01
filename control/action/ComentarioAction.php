@@ -24,7 +24,7 @@
 			if (isset($_POST['BTDelCom'])) {
 				try{
 					$comentario = new Comentario;
-					$comentario->get($_POST['BTDel']);
+					$comentario->get($_POST['BTDelCom']);
 					$comentario->delete();
 				}
 				catch(Exception $e){

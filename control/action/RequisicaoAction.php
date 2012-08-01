@@ -12,7 +12,7 @@
 			*/
 			if (isset($_POST['BTGeraLink'])) {
 				if (isset($_POST['id_usuario']) and $_POST['id_usuario'] != '0') {
-					$link = "http://".$_SERVER["HTTP_HOST"]."/ewf2/view/cadastro/cadRequisicaoIntegrado.php";
+					$link = "http://".$_SERVER["HTTP_HOST"]."/view/cadastro/cadRequisicaoIntegrado.php";
 					$link .= "?eps=".$_SESSION['id_empresa_logada'];
 					$link .= "&prj=".$_SESSION['id_projeto_logado'];
 					$link .= "&cpn=".$_POST['id_componente'];
@@ -29,6 +29,16 @@
 					echo "<script language=\"javascript\">history.back(1);</script> ";
 				}
 				
+			}
+			
+			/**
+			* Ação do Botão Nova Requisição
+			*/
+			if (isset($_POST['BTFiltro'])) {
+				session_start();
+				$_SESSION['ordem_log'] = $_POST['ordem_log'];
+				$_SESSION['cliente_log'] = $_POST['cliente_log'];
+				$_SESSION['responsavel_log'] = $_POST['responsavel_log'];
 			}
 			
 			/**
@@ -98,8 +108,9 @@
 				
 				if($requisicao->get($_SESSION['upd_requisicao']) == 0){
 					unset($_POST['id']);
-					if ($_SESSION['tipo_usuario_logado'] == '3')
-						$_POST['id_usuario_cadastro'] = $_SESSION['id_usuario_logado'];
+					if ($_SESSION['tipo_usuario_logado'] == '3') 
+						$_POST['id_usuario_solicitante'] = $_SESSION['id_usuario_logado'];
+					$_POST['id_usuario_cadastro'] = $_SESSION['id_usuario_logado'];
 					$_POST['chave'] = geraChaveRequisicao($_SESSION['id_empresa_logada']);
 					$_POST['pasta'] = CriaPastaTarefa($_POST['titulo']);
 					$_POST['situacao'] = '1';
@@ -114,13 +125,14 @@
 					$log = new LogRequisicao;
 					$log->setFrom($_POST);
 					$log->save();
-					if ($_SESSION['id_usuario_logado'] != $requisicao->id_usuario_cadastro) {
+					if ($_SESSION['id_usuario_logado'] != $requisicao->id_usuario_solicitante) {
 						$titulo = 'Seu Feedback '.$requisicao->chave.' foi atualizado';
 						$mensagem = 'O Feedback '.$requisicao->chave.' foi atualizado. Para acessar vá até o menu Feedback > Consultar e clique no Botão de Atualizar/Visualizar do Feedback '.$requisicao->chave.'';
 					
-						pg_query('insert into notificacoes (titulo,mensagem,id_usuario_remetente,id_usuario_destinatario) values (\''.$titulo.'\',\''.$mensagem.'\','.$requisicao->id_usuario_cadastro.','.$requisicao->id_usuario_cadastro.')');
+						pg_query('insert into notificacoes (titulo,mensagem,id_usuario_remetente,id_usuario_destinatario) values (\''.$titulo.'\',\''.$mensagem.'\','.$_SESSION['id_usuario_logado'].','.$requisicao->id_usuario_solicitante.')');
 					}
 				}
+				if ($_POST['id_usuario_responsavel']=='0') $_POST['id_usuario_responsavel'] = null;
 				if ($_POST['id_componente']=='0') $_POST['id_componente'] = null;
 				
 				//verifica se o usuario logado é cliente, se não for poe dado do requisitante
@@ -128,7 +140,7 @@
 					$_POST['id_cliente'] = $_SESSION["id_cliente_logado"];
 				else {
 					$usuario = new Usuario;
-					$usuario->get($_POST["id_usuario_cadastro"]);
+					$usuario->get($_POST["id_usuario_solicitante"]);
 					$_POST['id_cliente'] = $usuario->id_cliente;
 				}
 				

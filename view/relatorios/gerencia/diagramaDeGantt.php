@@ -23,7 +23,7 @@
 <link type="text/css" href="../../ci/css/menu.css" rel="stylesheet" />
 <link type="text/css" href="../../ci/css/preload.css" rel="stylesheet" />
 <link type="text/css" href="../../ci/css/nucleo.css" rel="stylesheet" />
-<link type="image/png" href="../../ci/imagens/favicon.png" rel="icon" />
+<link type="image/png" href="../../ci/imagens/icone.png" rel="icon" />
 <script type="text/javascript" src="../../ci/js/jquery.js"></script>
 <script type="text/javascript" src="../../ci/js/menu.js"></script>
 <script type="text/javascript" src="../../ci/js/acoes.js"></script>
@@ -38,7 +38,9 @@
 </div>
 <div id="menu">
 	<ul class="menu" style="margin-top: -15px;" >
-		<li><a class="parent"><span>EwF</span></a>
+		<li><a class="parent"><img style="margin-top:28px;margin-left:-25px;" src="../../ci/imagens/logo_snet.png" /></a>
+		</li>
+		<li><a class="parent"><span>Menu</span></a>
 			<div><ul>
 				<li><a href="../../../index.php"><span>Início</span></a></li>
 				<li><a class="parent"><span>Configuração</span></a>
@@ -55,7 +57,7 @@
 			<div><ul>
 				<li><a class="parent"><span>Projetos</span></a>
 					<div><ul>
-					<form action="../../../control/action/ProjetoAction.php" name="FormProjetosMenu" method="POST" name="FormProjetosMenu">
+					<form action="../../../control/action/ProjetoAction.php" name="FormProjetosMenu" method="POST" id="FormProjetosMenu">
 						<input type="hidden" name="opcao" value="selecionaProjeto" />
 						<input type="hidden" name="upd_projeto" value="" />
 						<? echo($projetoController->listMenu($projetos));	?>
@@ -133,7 +135,7 @@
 								
 		</fieldset>			
 </div>
-<? include('../../Rodape.php'); ?>
+<? include('../../rodape.php'); ?>
 <script type="text/javascript" src="../../ci/js/modalUnder.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@
 	require_once '../../../util/Logout.php';
 	
 	//bibliotecas pdf
-	include_once('../../../lib/phpjasper/fpdf/FPDF.php');
+	include_once('../../../lib/phpjasper/fpdf/fpdf.php');
 	include_once('../../../lib/phpjasper/PHPJasperXML.inc');
 	include_once('../../../util/FormataData.php');
 	
@@ -35,7 +35,7 @@
 <link type="text/css" href="../../ci/css/menu.css" rel="stylesheet" />
 <link type="text/css" href="../../ci/css/preload.css" rel="stylesheet" />
 <link type="text/css" href="../../ci/css/nucleo.css" rel="stylesheet" />
-<link type="image/png" href="../../ci/imagens/favicon.png" rel="icon" />
+<link type="image/png" href="../../ci/imagens/icone.png" rel="icon" />
 <script type="text/javascript" src="../../ci/js/jquery.js"></script>
 <script type="text/javascript" src="../../ci/js/menu.js"></script>
 <script type="text/javascript" src="../../ci/js/acoes.js"></script>
@@ -50,7 +50,9 @@
 </div>
 <div id="menu">
 	<ul class="menu" style="margin-top: -15px;" >
-		<li><a class="parent"><span>EwF</span></a>
+		<li><a class="parent"><img style="margin-top:28px;margin-left:-25px;" src="../../ci/imagens/logo_snet.png" /></a>
+		</li>
+		<li><a class="parent"><span>Menu</span></a>
 			<div><ul>
 				<li><a href="../../../index.php"><span>Início</span></a></li>
 				<li><a class="parent"><span>Configuração</span></a>
@@ -182,7 +184,7 @@
 							</form>
 				</fieldset>
 </div>
-<? include('../../Rodape.php'); ?>
+<? include('../../rodape.php'); ?>
 <script type="text/javascript" src="../../ci/js/modalUnder.js"></script>
 </body>
 </html>

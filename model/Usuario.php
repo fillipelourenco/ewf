@@ -9,6 +9,7 @@ class Usuario extends Lumine_Base{
         $this->_addField('email', 'email', 'varchar', 64, array());
         $this->_addField('login', 'login', 'varchar', 512, array());
         $this->_addField('senha', 'senha', 'varchar', 512, array());
+	$this->_addField('inicio','inicio','boolean',null,array());
 		$this->_addField("id_empresa", "id_empresa", "int", 10, array('notnull' => true, 'foreign' => '1', 'onUpdate' => 'CASCADE', 'onDelete' => 'CASCADE', 'linkOn' => 'id_empresa', 'class' => 'Empresa'));
 		$this->_addField("id_cliente", "id_cliente", "int", 10, array('notnull' => false, 'foreign' => '1', 'onUpdate' => 'CASCADE', 'onDelete' => 'CASCADE', 'linkOn' => 'id_cliente', 'class' => 'Cliente'));
 		

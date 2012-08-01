@@ -14,26 +14,28 @@
 						select \'\' as resposta, r.titulo, r.id_requisicao, r.id_projeto, lr.momento_alteracao as momento_cadastro, lr.chave, u.nome, \'log\' as tipo, \'\' as nomeresp
 							from logs_requisicoes lr
 							join requisicoes r on (r.chave=lr.chave)
-							join usuarios u on (r.id_usuario_cadastro=u.id_usuario)
-							where lr.id_empresa='.$_SESSION['id_empresa_logada'].'';
+							join usuarios u on (r.id_usuario_solicitante=u.id_usuario)
+							where r.id_projeto='.$_SESSION['id_projeto_logado'].'';
 			
 			if ($_SESSION['tipo_usuario_logado'] == '3') 
 				$sql .= ' and r.id_cliente='.$_SESSION['id_cliente_logado'].'';
-			else 
-				$sql .= ' and r.id_projeto='.$_SESSION['id_projeto_logado'].'';
+			//else 
+				//$sql .= 'u.id_empresa='.$_SESSION['id_empresa_logada'].'';
 					
-			$sql .= ' order by lr.momento_alteracao DESC) union (';
+			$sql .= ' group by r.id_requisicao, r.titulo, r.id_projeto, lr.momento_alteracao, lr.chave, u.nome, lr.situacao_anterior, lr.situacao_atual
+						having lr.situacao_anterior!=lr.situacao_atual 
+						order by lr.momento_alteracao DESC) union (';
 			
 			$sql .= 'select i.resposta, r.titulo, r.id_requisicao, r.id_projeto, i.momento_resposta as momento_cadastro, r.chave, u.nome, \'resposta\' as tipo, uc.nome as nomeresp
 						from iteracoes i
 						join requisicoes r on (r.id_requisicao=i.id_requisicao)
-						join usuarios u on (u.id_usuario=r.id_usuario_cadastro)
-						join usuarios uc on (uc.id_usuario=i.id_usuario) where ';
+						join usuarios u on (u.id_usuario=r.id_usuario_solicitante)
+						join usuarios uc on (uc.id_usuario=i.id_usuario) where r.id_projeto='.$_SESSION['id_projeto_logado'].' and ';
 						
 			if ($_SESSION['tipo_usuario_logado'] == '3') 
 				$sql .= 'r.id_cliente='.$_SESSION['id_cliente_logado'].'';
 			else 
-				$sql .= 'r.id_projeto='.$_SESSION['id_projeto_logado'].'';
+				$sql .= 'u.id_empresa='.$_SESSION['id_empresa_logada'].'';
 				
 			$sql .= ' order by i.momento_resposta DESC)) as atualizacoes order by momento_cadastro desc limit 10';
 			

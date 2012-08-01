@@ -34,7 +34,7 @@
 <link type="text/css" href="../ci/css/menu.css" rel="stylesheet" />
 <link type="text/css" href="../ci/css/preload.css" rel="stylesheet" />
 <link type="text/css" href="../ci/css/nucleo.css" rel="stylesheet" />
-<link type="image/png" href="../ci/imagens/favicon.png" rel="icon" />
+<link type="image/png" href="../ci/imagens/icone.png" rel="icon" />
 <script type="text/javascript" src="../ci/js/jquery.js"></script>
 <script type="text/javascript" src="../ci/js/menu.js"></script>
 <script type="text/javascript" src="../ci/js/acoes.js"></script>
@@ -47,7 +47,9 @@
 <? if ($_SESSION['tipo_usuario_logado'] == '3') : ?>
 <div id="menu">
 	<ul class="menu" style="margin-top: -15px;" >
-		<li><a class="parent"><span>EwF</span></a>
+		<li><a class="parent"><img style="margin-top:28px;margin-left:-25px;" src="../ci/imagens/logo_snet.png" /></a>
+		</li>
+		<li><a class="parent"><span>Menu</span></a>
 			<div><ul>
 				<li><a href="../feedback.php"><span>Início</span></a></li>
 				<? if($_SESSION['tipo_usuario_logado'] != '3') : ?>
@@ -56,13 +58,13 @@
 				<li><a href="?logout"><span>Logout</span></a></li>
 			</ul></div>
 		</li>
-		<li><a href="#" class="parent"><span>Requisições</span></a>
+		<li><a href="#" class="parent"><span>Feedback</span></a>
 			<div><ul>
 				<li><a href="cadRequisicao.php"><span>Enviar</span></a></li>
 				<li><a href="../consulta/consRequisicao.php"><span>Consultar</span></a></li>
 				<? if($_SESSION['tipo_usuario_logado'] != '3') : ?>
-				<li><a href="cadIntegrado.php"><span>Integrar</span></a></li>
-				<li><a href="../auxiliares/monitorFeedback.php"><span>Monitorar</span></a></li>
+				<li><a href="#"><span>Integrar</span></a></li>
+				<li><a href="#"><span>Monitor</span></a></li>
 				<? endif; ?>
 			</ul></div>
 		</li>
@@ -107,7 +109,9 @@
 <? else : ?>
 <div id="menu">
 	<ul class="menu" style="margin-top: -15px;" >
-		<li><a class="parent"><span>EwF</span></a>
+		<li><a class="parent"><img style="margin-top:28px;margin-left:-25px;" src="../ci/imagens/logo_snet.png" /></a>
+		</li>
+		<li><a class="parent"><span>Menu</span></a>
 			<div><ul>
 				<li><a href="../gerencia.php"><span>Início</span></a></li>
 				<li><a class="parent"><span>Configuração</span></a>

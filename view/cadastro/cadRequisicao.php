@@ -49,7 +49,7 @@
 <link type="text/css" href="../ci/css/menu.css" rel="stylesheet" />
 <link type="text/css" href="../ci/css/preload.css" rel="stylesheet" />
 <link type="text/css" href="../ci/css/nucleo.css" rel="stylesheet" />
-<link type="image/png" href="../ci/imagens/favicon.png" rel="icon" />
+<link type="image/png" href="../ci/imagens/icone.png" rel="icon" />
 <script type="text/javascript" src="../ci/js/jquery.js"></script>
 <script type="text/javascript" src="../ci/js/menu.js"></script>
 <script type="text/javascript" src="../ci/js/modalTop.js"></script>
@@ -63,7 +63,9 @@
 </div>
 <div id="menu">
 	<ul class="menu" style="margin-top: -15px;" >
-		<li><a class="parent"><span>EwF</span></a>
+		<li><a class="parent"><img style="margin-top:28px;margin-left:-25px;" src="../ci/imagens/logo_snet.png" /></a>
+		</li>
+		<li><a class="parent"><span>Menu</span></a>
 			<div><ul>
 				<li><a href="../feedback.php"><span>Início</span></a></li>
 				<? if($_SESSION['tipo_usuario_logado'] != '3') : ?>
@@ -72,13 +74,13 @@
 				<li><a href="?logout"><span>Logout</span></a></li>
 			</ul></div>
 		</li>
-		<li><a href="#" class="parent"><span>Requisições</span></a>
+		<li><a href="#" class="parent"><span>Requisição</span></a>
 			<div><ul>
 				<li><a href="cadRequisicao.php"><span>Enviar</span></a></li>
 				<li><a href="../consulta/consRequisicao.php"><span>Consultar</span></a></li>
 				<? if($_SESSION['tipo_usuario_logado'] != '3') : ?>
 				<li><a href="cadIntegrado.php"><span>Integrar</span></a></li>
-				<li><a href="../auxiliares/monitorFeedback.php"><span>Monitorar</span></a></li>
+				<li><a href="../auxiliares/monitorFeedback.php"><span>Monitor</span></a></li>
 				<? endif; ?>
 			</ul></div>
 		</li>
@@ -124,7 +126,7 @@
 	</h4>
 </div>
 <div id="conteudo" class="column">
-	<h3>Novo Feedback (Requisição)</h3>
+	<h3><?=$_SESSION['nome_projeto_logado']?> / Requisição <?=$_SESSION['obj_requisicao']['chave']?></h3>
     <fieldset style="width:870px;">
     <legend></legend>
 	    <form name="<? echo $for; ?>" action="<? $PHP_SELF; ?>" method="post" enctype="multipart/form-data">
@@ -146,9 +148,9 @@
 					else 
 						echo '<input type="hidden" id="situacao" name="situacao" value="1">';
 				?>
-				<p><label for="nome">Componente:</label>
+				<p><label for="nome">Módulo:</label>
                 <select size="1" cols="60" name="id_componente" style="width:180px;">
-					<option value="0">Não Sei</option>
+					<option value="0">Selecione...</option>
 					<?=$componenteController->getComboFeedback()?>
 				</select></p>	
 			</div>
@@ -161,15 +163,35 @@
 				<textarea cols="92" rows="18" name="descricao" id="descricao"><? echo $updRequisicao['descricao']; ?></textarea></p>
 			</div><p><p>
 			
-			<div id="coluna-1" style="width:420px;margin-top:15px;">
-				<p><label for="responsavel">Solicitante:</label>
-                <select size="1" name="id_usuario_cadastro" style="width:180px;" <? if ($_SESSION['tipo_usuario_logado'] == '3') echo "disabled"; ?>>
+			<div id="coluna-1" style="width:375px;margin-top:15px;">
+				<p><label for="id_usuario_solicitante">Solicitante:</label>
+                <select size="1" name="id_usuario_solicitante" style="width:180px;" <? if ($_SESSION['tipo_usuario_logado'] == '3') echo "disabled"; ?>>
 					<option value="0">Selecione...</option>
 					<?=$permissaoController->getComboUsuarios()?>
 				</select></p>
+				<? if ($_SESSION['tipo_usuario_logado'] != '3') : ?>
+				<p><label for="id_usuario_responsavel">Responsavel:</label>
+                <select size="1" name="id_usuario_responsavel" style="width:180px;">
+					<option value="0">Selecione...</option>
+					<?=$permissaoController->getComboResponsaveis()?>
+				</select></p>
+				<? endif; ?>
 			</div>
 			
-			<div id="coluna-1" style="width:860px;">				
+			<? if ($_SESSION['tipo_usuario_logado'] != '3') : ?>
+			<div id="coluna-1" style="width:400px;margin-top:13px;">
+				<p><label for="prioridade">Prioridade:</label>
+                <select size="1" name="prioridade" style="width:80px;">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select></p>
+			</div>
+			<? endif; ?>
+			
+			<div id="coluna-1" style="width:860px;margin-top:10px;">				
 				<p>
 				<?=$requisicaoController->getAnexos()?>
 				</p>

@@ -75,6 +75,25 @@
 			return $result;
 		}
 		
+		/**
+		* Combo com os Cliente da Empresa
+		* Retorno: String
+		*/
+		function getComboTodos(){
+			$cliente = new Cliente;
+			$cliente
+				->where("id_empresa=".$_SESSION['id_empresa_logada']."")
+				->order('nome_curto')
+				->find();
+			$clientes = $cliente->allToArray();
+			foreach($clientes as $item) {
+				$result .= '<option value="'.$item['id_cliente'].'"';
+				if($_SESSION['cliente_log'] == $item['id_cliente']) $result .= ' selected ';
+				$result .= '>'.$item['nome_curto'].'</option>';
+			}
+			return $result;
+		}
+		
 	}
 
 ?>

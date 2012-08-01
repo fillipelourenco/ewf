@@ -30,7 +30,7 @@
 			*/
 			if (isset($_POST['BTNew'])) {
 				$usuario = new Usuario;
-				if($usuario->get($_SESSION["upd_usuario"]) == 0){
+				if($usuario->get($_SESSION['upd_usuario']) == 0){
 					unset($_POST['id']);
 				}
 				if ($_POST['tipo'] == '3'){
@@ -103,7 +103,7 @@
 					$_SESSION["tipo_usuario_logado"] = $usuarios['0']['tipo'];
 					$_SESSION["id_empresa_logada"] = $usuarios['0']['id_empresa'];
 					$_SESSION["id_cliente_logado"] = $usuarios['0']['id_cliente'];
-					if ($_SESSION['tipo_usuario_logado'] != '1') {
+					if ($_SESSION['tipo_usuario_logado'] == '3') {
 						$_SESSION['permissao'] = 'disabled';
 						$_SESSION['permissao_var'] = false;
 					}
@@ -113,7 +113,7 @@
 					$_SESSION["nome_empresa_logada"] = $emp['nome'];
 					$_SESSION["login_empresa_logada"] = $emp['login'];
 					
-					if ($_SESSION["tipo_usuario_logado"] == '3') {
+					if (($_SESSION["tipo_usuario_logado"] == '3') or ($usuarios['0']['inicio'] == 't')) {
 						$permissao = new Permissao;
 						$permissao
 							->where("id_usuario=".$usuarios['0']['id_usuario']."")
@@ -121,8 +121,9 @@
 						$_SESSION["id_projeto_logado"] = $permissao->id_projeto;
 						header("Location: view/feedback.php");
 					}
-					else
+					else {
 						header("Location: view/gerencia.php");
+					}
 					exit;
 				}
 				echo "<script language=Javascript>alert('Login ou Senha incorreto. Tente Novamente');</script>";

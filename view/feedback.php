@@ -43,7 +43,7 @@
 <link type="text/css" href="ci/css/preload.css" rel="stylesheet" />
 <link type="text/css" href="ci/css/nucleo.css" rel="stylesheet" />
 <link type="text/css" href="ci/css/index.css" rel="stylesheet" />
-<link type="image/png" href="ci/imagens/favicon.png" rel="icon" />
+<link type="image/png" href="ci/imagens/icone.png" rel="icon" />
 <script type="text/javascript" src="ci/js/jquery.js"></script>
 <script type="text/javascript" src="ci/js/menu.js"></script>
 <script type="text/javascript" src="ci/js/acoes.js"></script>
@@ -55,7 +55,9 @@
 </div>
 <div id="menu">
 	<ul class="menu" style="margin-top: -15px;" >
-		<li><a class="parent"><span>EwF</span></a>
+		<li><a class="parent"><img style="margin-top:28px;margin-left:-25px;" src="ci/imagens/logo_snet.png" /></a>
+		</li>
+		<li><a class="parent"><span>Menu</span></a>
 			<div><ul>
 				<li><a href="feedback.php"><span>Início</span></a></li>
 				<? if($_SESSION['tipo_usuario_logado'] != '3') : ?>
@@ -64,13 +66,13 @@
 				<li><a href="?logout"><span>Logout</span></a></li>
 			</ul></div>
 		</li>
-		<li><a href="#" class="parent"><span>Requisições</span></a>
+		<li><a href="#" class="parent"><span>Requisição</span></a>
 			<div><ul>
 				<li><a href="cadastro/cadRequisicao.php"><span>Enviar</span></a></li>
 				<li><a href="consulta/consRequisicao.php"><span>Consultar</span></a></li>
 				<? if($_SESSION['tipo_usuario_logado'] != '3') : ?>
 				<li><a href="cadastro/cadIntegrado.php"><span>Integrar</span></a></li>
-				<li><a href="auxiliares/monitorFeedback.php"><span>Monitorar</span></a></li>
+				<li><a href="auxiliares/monitorFeedback.php"><span>Monitor</span></a></li>
 				<? endif; ?>
 			</ul></div>
 		</li>
@@ -126,21 +128,22 @@
 			<div style="margin-top:15px;">
 				<img title="Enviar Novo Relato de Erro, Melhoria ou Sugestão" src="ci/imagens/ico_novo.png">
 			</div>
-			<div class="tarefas-titulo" style="text-align:left;margin-left:27px;"><a href="cadastro/cadRequisicao.php">Enviar Novo Feedback (Requisição)</a></div>
+			<div class="tarefas-titulo" style="text-align:left;margin-left:27px;"><a href="cadastro/cadRequisicao.php">Enviar Nova Requisição</a></div>
 		</div>
 		<div style="float:left;margin-bottom:10px;width:400px;margin-left:7px;">
 			<div style="margin-top:15px;">
 				<img title="Consultar os Feedbacks Enviados" src="ci/imagens/ico_pesquisar.png">
 			</div>
-			<div class="tarefas-titulo" style="text-align:left;margin-left:27px;"><a href="consulta/consRequisicao.php">Consultar Status de Feedbacks</a></div>
+			<div class="tarefas-titulo" style="text-align:left;margin-left:27px;"><a href="consulta/consRequisicao.php">Consultar Status de Requisições</a></div>
 		</div>
+<!--
 		<div style="float:left;margin-bottom:10px;width:400px;margin-left:7px;">
 			<div style="margin-top:15px;">
-				<img title="Responder Avaliações do ProjetoLogado" src="ci/imagens/ico_sim.png">
+				<img title="Responder Avaliações do Projeto Logado" src="ci/imagens/ico_sim.png">
 			</div>
 			<div class="tarefas-titulo" style="text-align:left;margin-left:27px;"><a href="consulta/consFormulario.php">Responder Formularios de Avaliação</a></div>
 		</div>
-		<? if($_SESSION['tipo_usuario_logado'] != '3') : ?>
+		<? //if($_SESSION['tipo_usuario_logado'] != '3') : ?>
 		<div style="float:left;margin-bottom:10px;width:400px;margin-left:7px;">
 			<div style="margin-top:15px;">
 				<img title="Visualizar Gráficos de Avaliações ou Proporção de Feedback" src="ci/imagens/ico_grafico.png">
@@ -153,13 +156,15 @@
 			</div>
 			<div class="tarefas-titulo" style="text-align:left;margin-left:27px;"><a href="cadastro/cadFormulario.php">Cadastrar Novo Formulário de Teste</a></div>
 		</div>
+		<? //endif; ?>
+-->
 		<div style="float:left;margin-bottom:10px;width:400px;margin-left:7px;">
 			<div style="margin-top:15px;">
 				<img title="Monitorar os Feedbacks Recebidos" src="ci/imagens/ico_olho.png">
 			</div>
-			<div class="tarefas-titulo" style="text-align:left;margin-left:27px;"><a href="auxiliares/monitorFeedback.php">Monitor de Feedback</a></div>
+			<div class="tarefas-titulo" style="text-align:left;margin-left:27px;"><a href="auxiliares/monitorFeedback.php">Monitor de Requisição</a></div>
 		</div>
-		<? endif; ?>
+		<? //endif; ?>
 		</div>
 		</fieldset>
 	</div>
@@ -178,7 +183,7 @@
 		</fieldset>
 	</div>
 	<div id="coluna-1">
-		<h3>Feedbacks Atualizados</h3>
+		<h3>Requisições Atualizadas</h3>
 		<fieldset>
 		<legend></legend>
 		<div style="margin-bottom:20px;">
@@ -187,7 +192,7 @@
 		</fieldset>
 	</div>
 	<div id="coluna-1">
-		<h3>Últimos Feedbacks</h3>
+		<h3>Últimas Requisições</h3>
 		<fieldset>
 		<legend></legend>
 		<div>					

@@ -22,7 +22,7 @@
 <title><?=$_SESSION['nome_empresa'].' | '.$_SESSION['nome_projeto']?></title>
 <link type="text/css" href="../ci/css/preload.css" rel="stylesheet" />
 <link type="text/css" href="../ci/css/nucleo.css" rel="stylesheet" />
-<link type="image/png" href="../ci/imagens/favicon.png" rel="icon" />
+<link type="image/png" href="../ci/imagens/icone.png" rel="icon" />
 <script type="text/javascript" src="../ci/js/jquery.js"></script>
 <script type="text/javascript" src="../ci/js/modalTop.js"></script>
 <script type="text/javascript" src="../ci/js/anexos.js"></script>
