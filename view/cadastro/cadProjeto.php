@@ -137,7 +137,7 @@
 				<p><label for="nome">Nome:</label>
 				<input name="nome" id="nome" size="45" value="<? echo $updProjeto['nome']; ?>" type="text" <? if ($_SESSION['tipo_usuario_logado'] != '1') echo "disabled"; ?>/></p>
 							
-				<p><label for="descricao">Descição:</label>
+				<p><label for="descricao">Descrição:</label>
 				<textarea cols="60" rows="10" name="descricao" id="descricao" <? if ($_SESSION['tipo_usuario_logado'] != '1') echo "disabled"; ?>><? echo $updProjeto['descricao']; ?></textarea></p>
 				
 				<p><label for="login">Nome Rápido:</label>
