@@ -1,5 +1,4 @@
 <?
-	require_once '../RelatorioController.php';
 
 	class RiscoAction {
 	
@@ -78,15 +77,15 @@
 				if ($_POST['agrupado'] == 'Tipo') {
 					$_SESSION["relatorio"] = "Relatorio de Riscos por Tipo.jrxml";
 					$_SESSION["ordem"] = " order by tipo";
-					$controller->printRelatorio();
+					$controller->printRelRiscos();
 				} else if ($_POST['agrupado'] == 'Probabilidade') {
 					$_SESSION["relatorio"] = "Relatorio de Riscos por Probabilidade.jrxml";
 					$_SESSION["ordem"] = " order by probabilidade";
-					$controller->printRelatorio();
+					$controller->printRelRiscos();
 				} else if ($_POST['agrupado'] == 'Efeito') {
 					$_SESSION["relatorio"] = "Relatorio de Riscos por Efeito.jrxml";
 					$_SESSION["ordem"] = " order by efeito";
-					$controller->printRelatorio();
+					$controller->printRelRiscos();
 				} else {
 					echo "<script language=Javascript>alert('Você deve selecionar um agrupamento!');</script>";
 					echo "<script language=\"javascript\">history.back(1);</script> ";
