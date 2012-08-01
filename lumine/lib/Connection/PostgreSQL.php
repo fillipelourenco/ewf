@@ -73,9 +73,11 @@ class Lumine_Connection_PostgreSQL
 		{
 			Lumine_Log::debug('Criando conexao persistente com '.$this->getDatabase());
 			$this->conn_id = pg_pconnect($hostString);
+			pg_set_client_encoding($this->conn_id, LATIN1);
 		} else {
 			Lumine_Log::debug('Criando conexao com '.$this->getDatabase());
 			$this->conn_id = pg_connect($hostString);
+			pg_set_client_encoding($this->conn_id, LATIN1);
 		}
 		
 		if( !$this->conn_id )

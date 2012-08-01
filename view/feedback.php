@@ -55,8 +55,6 @@
 </div>
 <div id="menu">
 	<ul class="menu" style="margin-top: -15px;" >
-		<li><a class="parent"><img style="margin-top:28px;margin-left:-25px;" src="ci/imagens/logo_snet.png" /></a>
-		</li>
 		<li><a class="parent"><span>Menu</span></a>
 			<div><ul>
 				<li><a href="feedback.php"><span>Início</span></a></li>

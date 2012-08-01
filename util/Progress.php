@@ -13,7 +13,7 @@ function show_prog_bar($width, $percent, $type = 'green', $color = '#000') {
 	$font =			'Tahoma';
 	$font_size =		'8px';
 	$font_weight =		'bold';	// bold, normal
-	$imgs_folder =		'http://'.$_SERVER['HTTP_HOST'].'/ewf/view/ci/imagens';
+	$imgs_folder =		'http://'.$_SERVER['HTTP_HOST'].'/view/ci/imagens';
 
 	// == Don't edit below ==
 	$percent = min($percent, 100);
