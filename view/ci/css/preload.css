@@ -1,0 +1,15 @@
+#pageIsLoading { 
+	position:absolute; 
+	height:100%; 
+	top:0;
+	display:block; 
+	width:100%;
+	background:none;
+	padding:220px 0 10px 0;
+	background: transparent;
+	background-color: #333333; 
+	z-index:10000; 
+	-moz-opacity:.8;
+	opacity: .8; 
+	filter:alpha(opacity=80);
+}

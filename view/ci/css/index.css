@@ -1,0 +1,25 @@
+.tarefas{ 
+	border-top:8px #fff solid;
+}
+.tarefas>div{ 
+	font-family:Arial, Helvetica, sans-serif; 
+	font-size:12px; 
+	/*border-bottom:1px #eceaea solid; */
+	margin-bottom:5px;
+	margin-left:8px;
+	margin-right:8px;
+	padding: 0 0 0px 0;
+}
+.tarefas>div a{ 
+	margin-top:-15px;
+	color:#000;
+	text-decoration: underline; 
+	display:block;
+}
+.tarefas>div a:hover {
+	text-decoration: underline;
+}
+#tarefas-div {
+	/*background:#eceaea; */
+	background:#fff; 
+}

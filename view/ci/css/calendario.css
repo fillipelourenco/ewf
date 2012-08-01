@@ -1,0 +1,78 @@
+body{
+    font-family:monospace;
+    font-size:12px;
+    background:#FFFFFF;
+}
+.calendario_tabela{
+    font-family:monospace;
+    font-size:10px;
+    border:1px solid #999999;
+    background:#F5F5F5;
+}
+.calendario_dias{
+    background:#FFFFFF;
+    padding:2px;
+}
+.calendario_dias_hoje{
+    background:#C0C0C0;
+    padding:2px;
+}
+.calendario_semana{
+    background:#999999;
+    color:#FFFFFF;
+    text-align:center;
+    font-weight:bold;
+}
+.calendario_hoje{
+    font-weight:bold;
+}
+.calendario_mes_ano{
+    text-align:center;
+    font-weight:bold;
+    color:#666666;
+}
+.calendario_links{
+    color:#000000;
+    display:block;
+    text-decoration:none;
+}
+.calendario_links:hover{
+    text-decoration:none;
+    background:#999999;
+    color:#FFFFFF;
+}
+.calendario_links_hoje{
+    color:#FF0000;
+    display:block;
+    text-decoration:none;
+}
+.calendario_links_hoje:hover{
+    text-decoration:none;
+    background:#F0F0F0;
+    color:#FFFFFF;
+}
+
+a:link {
+  font-family:     monospace;
+  font-size:       12px;
+  text-decoration: none;
+  color:           #000000;
+}
+a:visited {
+  font-family:     monospace;
+  font-size:       12px;
+  text-decoration: none;
+  color:           #000000;
+}
+a:hover {
+  font-family:     monospace;
+  font-size:       12px;
+  text-decoration: underline;
+  color:           #000000;
+}
+a:active {
+  font-family:     monospace;
+  font-size:       12px;
+  text-decoration: none;
+  color:           #0000000;
+}
