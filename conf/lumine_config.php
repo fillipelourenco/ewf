@@ -2,8 +2,8 @@
 	$lumineConfig = array(
         'dialect' => 'PostgreSQL',
         'database' => 'ewf',
-        'user' => 'fillipe',
-        'password' => '123mudar',
+        'user' => 'postgres',
+        'password' => '12345',
         'port' => '5432',
         'host' => 'localhost',
         'class_path' => dirname(dirname(__FILE__)),
