@@ -48,7 +48,7 @@
 				$result .= "<td>".$rotulos->nome."</td>";
 				$result .= '<td><button class="update" title="Atualizar" type="submit" name="BTUpd" value="'.$rotulos->id_rotulo.'"></button></td>';
 				if ($_SESSION["tipo_usuario_logado"] == '1')
-					$result .= '<td><button onClick="if(confirm(\'Deseja excluir esse registro?\')){return true;}else{return false;}" class="delete" title="Deletar" type="submit" name="BTDel" value="'.$rotulos->id_projeto.'"></button></td>';
+					$result .= '<td><button onClick="if(confirm(\'Deseja excluir esse registro?\')){return true;}else{return false;}" class="delete" title="Deletar" type="submit" name="BTDel" value="'.$rotulos->id_rotulo.'"></button></td>';
 				$result .= '<tr>';
 			}
 			return $result;
