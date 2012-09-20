@@ -112,7 +112,7 @@
 				if ($tarefas->situacao == 4) $tarefas->situacao = 'Fechada';
 				if ($vencimento < 1)
 					$result .= '<div style="margin-left:5px;margin-top:10px;"><img title="" src="ci/imagens/ind_vermelho.png"></div>';
-				else if ($vencimento >= 1 and $vencimento < 6)
+				else if ($vencimento > 1 and $vencimento < 6)
 					$result .= '<div style="margin-left:5px;margin-top:10px;"><img title="" src="ci/imagens/ind_amarelo.png"></div>';
 				else
 					$result .= '<div style="margin-left:5px;margin-top:10px;"><img title="" src="ci/imagens/ind_verde.png"></div>';
@@ -280,9 +280,6 @@
 							$result .= '<label for="descricao">Anexos:</label>';
 							$count++;
 						} else $result .= '<label for="descricao"><font color="#ffffff">.</font> </label>';
-					if (!$_SESSION['permissao'])
-						$result .= "<input type=\"checkbox\" checked value=\"".$file."\" name=\"anexados[]\" disabled>  <a target=\"blank_\" href=\"../anexos/".$_SESSION['obj_tarefa']['pasta']."/".$file."\">$file</a><br>";
-					else
 						$result .= "<input type=\"checkbox\" checked value=\"".$file."\" name=\"anexados[]\">  <a target=\"blank_\" href=\"../anexos/".$_SESSION['obj_tarefa']['pasta']."/".$file."\">$file</a><br>";
 					}
 				}

@@ -245,9 +245,6 @@
 							$result .= '<label for="descricao">Anexos:</label>';
 							$count++;
 						} else $result .= '<label for="descricao"><font color="#ffffff">.</font> </label>';
-					//if (!$_SESSION['permissao'])
-						//$result .= "<input type=\"checkbox\" checked value=\"".$file."\" name=\"anexados[]\" disabled>  <a target=\"blank_\" href=\"../anexos/".$_SESSION['obj_tarefa']['pasta']."/".$file."\">$file</a><br>";
-					//else
 						$result .= "<input type=\"checkbox\" checked value=\"".$file."\" name=\"anexados[]\">  <a target=\"blank_\" href=\"../anexos/".$_SESSION['obj_requisicao']['pasta']."/".$file."\">$file</a><br>";
 					}
 				}
