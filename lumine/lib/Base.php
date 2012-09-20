@@ -1157,12 +1157,15 @@ class Lumine_Base extends Lumine_EventListener implements Iterator
 				// se estiver vazio e o campo for auto-increment
 				// nao podemos colocar null porque o campo pode ser zero e MySQL
 				// deixa inserir valores como zero e ele aumenta o autoincrement
+				/*
+				TODO: verificacao comentada por esta causando fatal error de campo
+					  duplicado porem o model (Usuario) esta correto
 				if( empty($pkvalue) && !empty($pk['options']['autoincrement']))
 				{
 					// pega o ultimo ID do campo
 					$valor = $this->_getDialect()->getLastId( $pk['column'] );
 					$this->setFieldValue($pk['name'], $valor);
-				}
+				}*/
 			}
 			
 			$this->saveDependentObjects();
