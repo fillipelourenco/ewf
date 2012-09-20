@@ -48,11 +48,8 @@
 			$formulario
 				->select('f.id_formulario,f.chave,f.descricao,f.status,v.master_version,v.great_version,v.average_version,v.small_version')
 				->alias('f')
-				->join($versao,'inner','v');
-			if ($_SESSION['tipo_usuario_logado'] == '3')
-				$formulario
-					->where('f.id_projeto='.$_SESSION['id_projeto_logado'].' and f.status=true');
-			$formulario
+				->join($versao,'inner','v')
+				->where('f.id_projeto='.$_SESSION['id_projeto_logado'].' and f.status=true')
 				->order('f.id_formulario')
 				->find();
 			
@@ -70,7 +67,7 @@
 				->select('f.id_formulario,f.chave,f.descricao,f.status,v.master_version,v.great_version,v.average_version,v.small_version')
 				->alias('f')
 				->join($versao,'inner','v')
-				->where('f.id_projeto='.$_SESSION['id_projeto_logado'].' and status=false')
+				->where('f.id_projeto='.$_SESSION['id_projeto_logado'].' and (status = false or status is null)')
 				->order('f.id_formulario')
 				->limit(10)
 				->find();

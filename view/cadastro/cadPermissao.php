@@ -32,6 +32,7 @@
 <link type="image/png" href="../ci/imagens/favicon.png" rel="icon" />
 <script type="text/javascript" src="../ci/js/jquery.js"></script>
 <script type="text/javascript" src="../ci/js/menu.js"></script>
+<script type="text/javascript" src="../ci/js/acoes.js"></script>
 </head>
 <script type="text/javascript" src="../ci/js/modalTop.js"></script>
 <body>
@@ -42,7 +43,7 @@
 	<ul class="menu" style="margin-top: -15px;" >
 		<li><a class="parent"><span>EwF</span></a>
 			<div><ul>
-				<li><a href="../../index.php"><span>Início</span></a></li>
+				<li><a href="../gerencia.php"><span>Início</span></a></li>
 				<li><a class="parent"><span>Configuração</span></a>
 					<div><ul>
 						<li><a href="cadEmpresa.php"><span>Empresa</span></a></li>
@@ -57,7 +58,7 @@
 			<div><ul>
 				<li><a class="parent"><span>Projetos</span></a>
 					<div><ul>
-					<form action="../../control/ProjetoActionController.php" name="FormProjetosMenu" id="FormProjetosMenu" method="POST" >
+					<form action="../../control/action/ProjetoAction.php" name="FormProjetosMenu" id="FormProjetosMenu" method="POST" >
 						<input type="hidden" name="upd_projeto" value="" />
 						<? echo($projetoController->listMenu($projetos));	?>
 					</form>

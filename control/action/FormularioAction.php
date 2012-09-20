@@ -72,7 +72,12 @@
 			if (isset($_POST['BTAtualizar'])) {
 				$formulario = new Formulario;
 				$formulario->get($_SESSION['upd_formulario']);
-				if ($_POST['status'] == 'on') $_POST['status'] = true;
+				if ($_POST['status'] == 'on') { 
+					$_POST['status'] = 1;
+				}
+				else {
+					$_POST['status'] = null;
+				}
 				$formulario->setFrom($_POST);
 				$formulario->save();
 								

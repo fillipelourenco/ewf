@@ -28,7 +28,7 @@
 				if ($_SESSION['origem'])
 					echo "<meta http-equiv=\"Refresh\" content=\"0;URL=../consulta/consPermissoes.php\">";
 				else
-					echo "<meta http-equiv=\"Refresh\" content=\"0;URL=../../projeto.php\">";
+					echo "<meta http-equiv=\"Refresh\" content=\"0;URL=../../view/projeto.php\">";
 			}
 			
 			/**

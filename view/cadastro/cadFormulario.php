@@ -52,13 +52,13 @@
 				<li><a href="?logout"><span>Logout</span></a></li>
 			</ul></div>
 		</li>
-		<li><a href="#" class="parent"><span>Requisições</span></a>
+		<li><a href="#" class="parent"><span>Feedback</span></a>
 			<div><ul>
 				<li><a href="cadRequisicao.php"><span>Enviar</span></a></li>
 				<li><a href="../consulta/consRequisicao.php"><span>Consultar</span></a></li>
 				<? if($_SESSION['tipo_usuario_logado'] != '3') : ?>
 				<li><a href="cadIntegrado.php"><span>Integrar</span></a></li>
-				<li><a href="../auxiliares/monitorFeedback.php"><span>Monitorar</span></a></li>
+				<li><a href="../auxiliares/monitorFeedback.php"><span>Monitor</span></a></li>
 				<? endif; ?>
 			</ul></div>
 		</li>
@@ -120,15 +120,16 @@
 			
 			<? if (isset($_SESSION['upd_formulario'])) : ?>
 			<p><label for="status">Ativo:</label>
-			<input type="checkbox" <? if ($updFormulario['status']=='t') echo "checked"; ?> name="situacao"></p>
+			<input type="checkbox" <? if ($updFormulario['status']=='t') echo "checked"; ?> name="status"></p>
 			<? endif; ?>
 
 			
 			<p style="margin-top:25px;">
-			<input name="BTBack" class="formbutton" value="Voltar" type="submit" />
 			<? if (isset($_SESSION['upd_formulario'])) : ?>
 			<input name="BTAtualizar" class="formbutton" value="Atualizar" type="submit" />
+			<input name="BTBack" class="formbutton" value="Voltar" type="submit" />
 			<? else : ?>
+			<input name="BTBack" class="formbutton" value="Voltar" type="submit" />
 			<input name="BTAva" class="formbutton" value="Avançar" type="submit" />
 			<? endif; ?>
 			</p>

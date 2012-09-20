@@ -56,13 +56,13 @@
 				<li><a href="?logout"><span>Logout</span></a></li>
 			</ul></div>
 		</li>
-		<li><a href="#" class="parent"><span>Requisições</span></a>
+		<li><a href="#" class="parent"><span>Feedback</span></a>
 			<div><ul>
 				<li><a href="../cadastro/cadRequisicao.php"><span>Enviar</span></a></li>
 				<li><a href="../consulta/consRequisicao.php"><span>Consultar</span></a></li>
 				<? if($_SESSION['tipo_usuario_logado'] != '3') : ?>
 				<li><a href="../cadastro/cadIntegrado.php"><span>Integrar</span></a></li>
-				<li><a href="../auxiliares/monitorFeedback.php"><span>Monitorar</span></a></li>
+				<li><a href="../auxiliares/monitorFeedback.php"><span>Monitor</span></a></li>
 				<? endif; ?>
 			</ul></div>
 		</li>
@@ -85,13 +85,7 @@
 		<? if($_SESSION['tipo_usuario_logado'] != '3') : ?>
 		<li><a class="parent"><span>Gráficos</span></a>
 			<div><ul>
-				<li><a class="parent"><span>Feedback</span></a>
-					<div><ul>
-						<li><a href="#"><span>Erros Relatados</span></a></li>
-						<li><a href="#"><span>Melhoria Relatadas</span></a></li>
-						<li><a href="#"><span>Sugestão Relatadas</span></a></li>
-					</ul></div>
-				</li>
+				<li><a href="feedback.php"><span>Feedback</span></a></li>
 				<li><a class="parent"><span>Avaliações</span></a>
 					<div><ul>
 						<form action="../../control/action/FormularioAction.php" id="FormAvaliacoes" name="FormAvaliacoes" method="POST" >
