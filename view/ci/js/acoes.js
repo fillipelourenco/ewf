@@ -68,7 +68,7 @@
 	
 	function renderCliente()
 	{
-		if (document.cadUsuario.userTipo.value == '1' || document.cadUsuario.userTipo.value == '1'){
+		if (document.cadUsuario.userTipo.value == '1' || document.cadUsuario.userTipo.value == '2'){
 			document.cadUsuario.field_id_cliente.disabled = 1;
 		}
 		else {
