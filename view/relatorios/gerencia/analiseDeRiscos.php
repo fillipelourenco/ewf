@@ -52,14 +52,14 @@
 	<ul class="menu" style="margin-top: -15px;" >
 		<li><a class="parent"><span>EwF</span></a>
 			<div><ul>
-				<li><a href="../../../index.php"><span>Início</span></a></li>
+				<li><a href="../../gerencia.php"><span>Início</span></a></li>
 				<li><a class="parent"><span>Configuração</span></a>
 					<div><ul>
 						<li><a href="../../cadastro/cadEmpresa.php"><span>Empresa</span></a></li>
 						<li><a href="../../consulta/consRotulo.php"><span>Rótulos</span></a></li>
 					</ul></div>
 				</li>
-				<li><a href="#"><span>Módulo Feedback</span></a></li>
+				<li><a href="../../feedback.php"><span>Módulo Feedback</span></a></li>
 				<li><a href="?logout"><span>Logout</span></a></li>
 			</ul></div>
 		</li>
@@ -76,6 +76,7 @@
 					</ul></div>
 				</li>
 				<? if ($_SESSION['tipo_usuario_logado'] == '1') : ?>
+				<li><a href="../../consulta/consCliente.php"><span>Clientes</span></a></li>
 				<li><a href="../../consulta/consUsuario.php"><span>Usuários</span></a></li>
 				<? endif; ?>
 			</ul></div>
